@@ -19,6 +19,7 @@
   --card:#FFFFFF;
   --band-bg:#14170F;
   --band-ink:#F1F3ED;
+  --sticker-outline:#FFFFFF;
 }
 
 @media (prefers-color-scheme: dark){
@@ -88,24 +89,21 @@ body{
   position:relative;
   z-index:1;
   min-height:54cqi;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
   background:
-    linear-gradient(180deg, rgba(14,17,11,.28) 0%, rgba(14,17,11,.42) 45%, rgba(14,17,11,.88) 100%),
+    linear-gradient(180deg, rgba(14,17,11,0) 0%, rgba(14,17,11,.02) 45%, rgba(14,17,11,.12) 100%),
     url('./assets/images/hero-bachalpsee.jpg') center 62% / cover no-repeat;
   color:var(--band-ink);
   padding:3cqi 7cqi 2.6cqi;
   flex:0 0 auto;
 }
-.header-top{
+.footer-brand{
   display:flex;
   align-items:center;
-  gap:.6em;
+  gap:.5em;
 }
 .logomark{
-  width:clamp(16px, 5.4cqi, 36px);
-  height:clamp(16px, 5.4cqi, 36px);
+  width:clamp(16px, 4.6cqi, 30px);
+  height:clamp(16px, 4.6cqi, 30px);
   flex:0 0 auto;
   filter:drop-shadow(0 1px 3px rgba(0,0,0,.4));
 }
@@ -114,25 +112,27 @@ body{
   font-family:'Baloo 2', sans-serif;
   font-weight:700;
   letter-spacing:.01em;
-  font-size:clamp(15px, 4.6cqi, 29px);
+  font-size:clamp(13px, 3.6cqi, 22px);
   color:var(--band-ink);
   margin:0;
 }
 .wordmark{
   margin:0;
+  width:100%;
   font-family:'Oswald', sans-serif;
   font-weight:700;
   text-transform:uppercase;
   line-height:.94;
   font-size:clamp(32px, 13.5cqi, 90px);
-  letter-spacing:.005em;
-  text-wrap:balance;
   text-shadow:0 2px 18px rgba(0,0,0,.35);
+  display:flex;
+  justify-content:space-between;
 }
+.wordmark .sp{width:.28em;}
 .hero-bikes{
   position:absolute;
   left:50%;
-  top:47%;
+  top:65%;
   transform:translate(-50%, -50%);
   display:flex;
   align-items:center;
@@ -142,11 +142,25 @@ body{
   z-index:1;
 }
 .hero-bikes img{
-  width:clamp(150px, 32cqi, 360px);
+  width:clamp(180px, 40cqi, 430px);
   height:auto;
   display:block;
-  filter:drop-shadow(0 12px 26px rgba(0,0,0,.5));
+  filter:
+    drop-shadow(1.8px 0 0 var(--sticker-outline))
+    drop-shadow(1.56px 0.9px 0 var(--sticker-outline))
+    drop-shadow(0.9px 1.56px 0 var(--sticker-outline))
+    drop-shadow(0 1.8px 0 var(--sticker-outline))
+    drop-shadow(-0.9px 1.56px 0 var(--sticker-outline))
+    drop-shadow(-1.56px 0.9px 0 var(--sticker-outline))
+    drop-shadow(-1.8px 0 0 var(--sticker-outline))
+    drop-shadow(-1.56px -0.9px 0 var(--sticker-outline))
+    drop-shadow(-0.9px -1.56px 0 var(--sticker-outline))
+    drop-shadow(0 -1.8px 0 var(--sticker-outline))
+    drop-shadow(0.9px -1.56px 0 var(--sticker-outline))
+    drop-shadow(1.56px -0.9px 0 var(--sticker-outline))
+    drop-shadow(3px 4px 2px rgba(0,0,0,.4));
 }
+.hero-bikes img:nth-child(2){transform:scaleX(-1);}
 /* ---------- pricing ---------- */
 .pricing{
   position:relative; z-index:1;
@@ -260,6 +274,14 @@ table.matrix td span{
   color:var(--muted);
 }
 .footnotes p{margin:0;}
+.footnote-rule{
+  flex-basis:100%;
+  width:100%;
+  margin:.9em 0 .7em;
+  border:none;
+  border-top:1px solid var(--line);
+}
+.footnotes p.footnote-full{flex-basis:100%;margin-top:0;}
 
 /* ---------- footer ---------- */
 .footer{
@@ -269,9 +291,14 @@ table.matrix td span{
   color:var(--band-ink);
   padding:2.6cqi 7cqi;
   display:grid;
-  grid-template-columns:1fr auto;
-  gap:2cqi;
+  grid-template-columns:auto 1fr auto;
+  gap:2.6cqi;
   align-items:center;
+}
+.footer-brand{
+  padding-right:2.6cqi;
+  border-right:1px solid rgba(241,243,237,.22);
+  align-self:stretch;
 }
 .contact-label{
   font-family:'IBM Plex Mono', monospace;
