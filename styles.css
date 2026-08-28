@@ -20,6 +20,7 @@
   --band-bg:#14170F;
   --band-ink:#F1F3ED;
   --sticker-outline:#FFFFFF;
+  --sticker-outline-2:#14170F;
 }
 
 @media (prefers-color-scheme: dark){
@@ -89,9 +90,7 @@ body{
   position:relative;
   z-index:1;
   min-height:54cqi;
-  background:
-    linear-gradient(180deg, rgba(14,17,11,0) 0%, rgba(14,17,11,.02) 45%, rgba(14,17,11,.12) 100%),
-    url('./assets/images/hero-bachalpsee.jpg') center 62% / cover no-repeat;
+  background: url('./assets/images/hero-bachalpsee.jpg') center 45% / cover no-repeat;
   color:var(--band-ink);
   padding:3cqi 7cqi 2.6cqi;
   flex:0 0 auto;
@@ -125,6 +124,8 @@ body{
   line-height:.94;
   font-size:clamp(32px, 13.5cqi, 90px);
   text-shadow:0 2px 18px rgba(0,0,0,.35);
+  -webkit-text-stroke:.07em var(--sticker-outline-2);
+  paint-order:stroke fill;
   display:flex;
   justify-content:space-between;
 }
@@ -137,7 +138,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:1.5cqi;
+  gap:5cqi;
   width:92%;
   z-index:1;
 }
@@ -158,7 +159,19 @@ body{
     drop-shadow(0 -1.8px 0 var(--sticker-outline))
     drop-shadow(0.9px -1.56px 0 var(--sticker-outline))
     drop-shadow(1.56px -0.9px 0 var(--sticker-outline))
-    drop-shadow(3px 4px 2px rgba(0,0,0,.4));
+    drop-shadow(3.4px 0 0 var(--sticker-outline-2))
+    drop-shadow(2.94px 1.7px 0 var(--sticker-outline-2))
+    drop-shadow(1.7px 2.94px 0 var(--sticker-outline-2))
+    drop-shadow(0 3.4px 0 var(--sticker-outline-2))
+    drop-shadow(-1.7px 2.94px 0 var(--sticker-outline-2))
+    drop-shadow(-2.94px 1.7px 0 var(--sticker-outline-2))
+    drop-shadow(-3.4px 0 0 var(--sticker-outline-2))
+    drop-shadow(-2.94px -1.7px 0 var(--sticker-outline-2))
+    drop-shadow(-1.7px -2.94px 0 var(--sticker-outline-2))
+    drop-shadow(0 -3.4px 0 var(--sticker-outline-2))
+    drop-shadow(1.7px -2.94px 0 var(--sticker-outline-2))
+    drop-shadow(2.94px -1.7px 0 var(--sticker-outline-2))
+    drop-shadow(8px 10px 0 rgba(0,0,0,.28));
 }
 .hero-bikes img:nth-child(2){transform:scaleX(-1);}
 /* ---------- pricing ---------- */
@@ -173,9 +186,19 @@ body{
   justify-content:center;
 }
 .rowhead{
-  display:inline-flex;
+  display:flex;
   align-items:center;
   gap:.55em;
+}
+.rowsub{
+  display:block;
+  font-family:'IBM Plex Sans', sans-serif;
+  font-weight:400;
+  text-transform:none;
+  letter-spacing:0;
+  font-size:.6em;
+  color:var(--muted);
+  margin-top:.2em;
 }
 .ico{
   flex:0 0 auto;
@@ -281,7 +304,24 @@ table.matrix td span{
   border:none;
   border-top:1px solid var(--line);
 }
-.footnotes p.footnote-full{flex-basis:100%;margin-top:0;}
+.footnote-list{
+  flex-basis:100%;
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:.3em;
+}
+.footnote-list li{
+  padding-left:1.1em;
+  position:relative;
+}
+.footnote-list li::before{
+  content:"\2013";
+  position:absolute;
+  left:0;
+}
 
 /* ---------- footer ---------- */
 .footer{
