@@ -138,7 +138,6 @@ approximation.
     Advanced EQ, and Pro EQ ABS trims. `bike-ghost-e-teru.png` is the
     **Advanced (High, 29")** variant, the closest real match. Swap the image
     if a closer/newer trim shows up in their shop.
-  - `bike-ghost-e-asx.png` is left in `assets/images/` unused (it was the
     original bike before the E-Teru swap) — safe to delete.
 - **QR code** — generated locally with the `segno` Python library, not
   fetched from any API.
