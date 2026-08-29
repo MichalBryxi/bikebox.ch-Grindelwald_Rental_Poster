@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "description": "A4 rental flyer for BikeBox Grindelwald, built as a single self-contained HTML file.",
   "scripts": {
-    "mask": "bash scripts/generate-mask.sh",
+    "mask": "bash bin/generate-mask.sh",
     "predev": "npm run mask",
     "prebuild": "npm run mask",
     "dev": "vite",
