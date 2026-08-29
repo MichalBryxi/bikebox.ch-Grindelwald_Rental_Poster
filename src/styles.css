@@ -73,18 +73,6 @@ body{
   flex-direction:column;
 }
 
-.contour{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  opacity:.05;
-  pointer-events:none;
-  z-index:0;
-}
-:root[data-theme="dark"] .contour{opacity:.08;}
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .contour{opacity:.08;} }
-
 /* ---------- header ---------- */
 .header{
   position:relative;
@@ -223,30 +211,12 @@ table.matrix{
   font-variant-numeric:tabular-nums;
 }
 table.matrix.matrix-extra{margin-top:1.6cqi;}
-.table-brand{
-  display:inline-flex;
-  align-items:center;
-  gap:.35em;
-}
-.table-brand-logo{
-  width:clamp(14px, 3.6cqi, 22px);
-  height:clamp(14px, 3.6cqi, 22px);
-  flex:0 0 auto;
-}
-.table-brand-logo .outline{fill:var(--ink);}
-.table-brand-name{
-  font-family:'Baloo 2', sans-serif;
-  font-weight:700;
-  text-transform:none;
-  letter-spacing:.01em;
-  font-size:clamp(11px, 3cqi, 18px);
-  color:var(--ink);
-}
 table.matrix th, table.matrix td{
   border:1px solid var(--line);
   padding:.85cqi 1.6cqi;
   text-align:center;
 }
+.col1{width:24cqi;}
 table.matrix thead th{
   background:var(--band-bg);
   color:var(--band-ink);
@@ -325,22 +295,35 @@ table.matrix td span{
   color:var(--band-ink);
   padding:2.6cqi 7cqi;
   display:grid;
-  grid-template-columns:1.8fr 1fr auto;
+  grid-template-columns:1fr 1.8fr auto;
   gap:2.6cqi;
   align-items:center;
 }
+.footer-contact,
 .footer-brand{
   padding-right:2.6cqi;
   border-right:1px solid rgba(241,243,237,.22);
   align-self:stretch;
 }
-.contact-label{
-  font-family:'IBM Plex Mono', monospace;
-  font-size:clamp(7.5px, 1.5cqi, 10.5px);
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--signal);
+.contact-brand{
+  display:flex;
+  align-items:center;
+  gap:.35em;
   margin:0 0 .6em;
+}
+.contact-brand-logo{
+  width:clamp(14px, 3.6cqi, 22px);
+  height:clamp(14px, 3.6cqi, 22px);
+  flex:0 0 auto;
+}
+.contact-brand-logo .outline{fill:var(--band-ink);}
+.contact-brand-name{
+  font-family:'Baloo 2', sans-serif;
+  font-weight:700;
+  letter-spacing:.01em;
+  font-size:clamp(11px, 3cqi, 18px);
+  color:var(--band-ink);
+  margin:0;
 }
 .contact-line{
   font-size:clamp(10px, 2.3cqi, 14px);
@@ -358,7 +341,10 @@ table.matrix td span{
 .hours span:nth-child(odd){color:var(--band-ink); opacity:.6;}
 .hours span:nth-child(even){color:var(--band-ink);}
 .qr-block{
-  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.6em;
 }
 .qr-card{
   background:#fff;
@@ -367,14 +353,7 @@ table.matrix td span{
   line-height:0;
 }
 .qr-card svg{width:100%;height:auto;display:block;}
-.qr-caption{
-  margin:.6em 0 0;
-  font-family:'IBM Plex Mono', monospace;
-  font-size:clamp(6.5px, 1.25cqi, 9px);
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--signal);
-}
+.qr-block .contact-line{margin:0;}
 
 @page{
   size:A4;
