@@ -5,6 +5,7 @@
 @font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:600;font-display:swap;src:url('./assets/fonts/IBMPlexSans-600.woff2') format('woff2');}
 @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('./assets/fonts/IBMPlexMono-500.woff2') format('woff2');}
 @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('./assets/fonts/IBMPlexMono-600.woff2') format('woff2');}
+@font-face{font-family:'Baloo 2';font-style:normal;font-weight:700;font-display:swap;src:url('./assets/fonts/Baloo2-700.woff2') format('woff2');}
 
 :root{
   --paper:#F0F2EC;
@@ -222,6 +223,25 @@ table.matrix{
   font-variant-numeric:tabular-nums;
 }
 table.matrix.matrix-extra{margin-top:1.6cqi;}
+.table-brand{
+  display:inline-flex;
+  align-items:center;
+  gap:.35em;
+}
+.table-brand-logo{
+  width:clamp(14px, 3.6cqi, 22px);
+  height:clamp(14px, 3.6cqi, 22px);
+  flex:0 0 auto;
+}
+.table-brand-logo .outline{fill:var(--ink);}
+.table-brand-name{
+  font-family:'Baloo 2', sans-serif;
+  font-weight:700;
+  text-transform:none;
+  letter-spacing:.01em;
+  font-size:clamp(11px, 3cqi, 18px);
+  color:var(--ink);
+}
 table.matrix th, table.matrix td{
   border:1px solid var(--line);
   padding:.85cqi 1.6cqi;
