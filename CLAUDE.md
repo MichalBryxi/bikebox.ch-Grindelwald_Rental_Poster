@@ -55,10 +55,30 @@ save to `src/index.html`, `src/styles.css`, or any file under
 - Final file: `npm run build`, then open `dist/index.html` directly in a
   browser (or `open dist/index.html`) — it's a single ~2 MB file, no server
   needed.
-- To print: open `dist/index.html` in Chrome → Print. The page is sized to
-  exact A4 (210×297mm) via the `@media print` block in `styles.css`, so it
-  should print full-bleed on one sheet — set margins to "None" in the print
-  dialog.
+- To print: open `dist/index.html` in Chrome → Print. `styles.css` handles
+  everything CSS can control: `@page{size:A4;margin:0}` sets the physical
+  page to a borderless A4, and inside it `.sheet` is deliberately printed
+  *smaller* than the full page — 190mm × 277mm instead of 210mm × 297mm,
+  a 1cm gutter on every side — then centered on the page via flex
+  (`body{display:flex;align-items:center;justify-content:center;height:297mm}`
+  in `@media print`). That gutter is intentionally built into our own
+  layout rather than left to the browser's page margin: `@page{margin:...}`
+  is honored inconsistently across browsers/print dialogs, so a physical
+  margin baked into the design (a smaller sheet, page margin left at 0)
+  prints reliably everywhere, whereas depending on `@page` margin would
+  not. `break-inside:avoid` (on top of `.sheet`'s existing
+  `overflow:hidden` clip) keeps it from spilling onto a second sheet, and
+  `print-color-adjust:exact` stops Chrome from stripping the dark header/
+  footer/table backgrounds to save ink.
+
+  Two things a page's CSS is deliberately not allowed to set, so they
+  still need a one-time toggle in Chrome's print dialog itself: **Margins
+  → None** (so Chrome doesn't *also* add its own margin on top of the
+  gutter already built into the page), and turning off **"Headers and
+  footers"** (the browser-injected title/URL/page-number strip) if it's
+  on — browsers reserve both as user-controlled to keep a page from hiding
+  what's being printed or where it came from. Leave **Background
+  graphics** on, or the color-adjust rule above has nothing to work with.
 
 ## Content (edit directly in `index.html`)
 
