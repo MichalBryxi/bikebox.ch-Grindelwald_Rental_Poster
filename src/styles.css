@@ -90,19 +90,12 @@ body{
   position:relative;
   z-index:1;
   min-height:54cqi;
-  --hero-pos: calc(50% - 100px) calc(45% + 100px);
+  --hero-pos: calc(50% - 120px) calc(45% + 70px);
   --hero-size: 130%;
   background: url('./assets/images/hero-02.jpg') var(--hero-pos) / var(--hero-size) no-repeat;
   color:var(--band-ink);
   padding:3cqi 7cqi 2.6cqi;
   flex:0 0 auto;
-}
-.header-mountains{
-  position:absolute;
-  inset:0;
-  background: url('./assets/generated/hero-mountains-mask.png') var(--hero-pos) / var(--hero-size) no-repeat;
-  z-index:2;
-  pointer-events:none;
 }
 .footer-brand{
   display:flex;
@@ -127,7 +120,7 @@ body{
 .wordmark{
   position:relative;
   z-index:1;
-  margin:-10px 0 0;
+  margin:20px 0 0;
   width:100%;
   font-family:'Oswald', sans-serif;
   font-weight:700;
