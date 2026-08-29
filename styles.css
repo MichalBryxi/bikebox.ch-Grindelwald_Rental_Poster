@@ -160,20 +160,21 @@ body{
   --shadow-x:8px;
   filter:
     drop-shadow(0 0 1px var(--sticker-outline))
-    drop-shadow(0 0 2px var(--sticker-outline))
-    drop-shadow(0 0 3px var(--sticker-outline))
-    drop-shadow(0 0 4px var(--sticker-outline))
-    drop-shadow(0 0 5px var(--sticker-outline))
-    drop-shadow(0 0 6px var(--sticker-outline))
-    drop-shadow(0 0 7px var(--sticker-outline))
-    drop-shadow(0 0 8px var(--sticker-outline))
-    drop-shadow(5px 5px 0 var(--sticker-outline-2))
-    drop-shadow(5px -5px 0 var(--sticker-outline-2))
-    drop-shadow(-5px -5px 0 var(--sticker-outline-2))
-    drop-shadow(-5px 5px 0 var(--sticker-outline-2))
+    drop-shadow(0 0 1px var(--sticker-outline))
+    drop-shadow(0 0 1px var(--sticker-outline))
+    drop-shadow(0 0 1px var(--sticker-outline))
+    drop-shadow(0 0 1px var(--sticker-outline))
+    drop-shadow(0 0 1px var(--sticker-outline))
+    drop-shadow(0 0 1px var(--sticker-outline))
+    drop-shadow(0 0 1px var(--sticker-outline))
+    drop-shadow(0 0 1px var(--sticker-outline))
+    drop-shadow(0 0 1px var(--sticker-outline))
+    drop-shadow(0 0 1px var(--sticker-outline))
+    drop-shadow(0 0 1px var(--sticker-outline-2))
     drop-shadow(var(--shadow-x) 10px 0 rgba(0,0,0,.28));
 }
-.hero-bikes img:nth-child(2){transform:scaleX(-1); --shadow-x:-8px;}
+.hero-bikes img:nth-child(1){transform:rotate(-15deg); }
+.hero-bikes img:nth-child(2){transform:scaleX(-1) rotate(-15deg); --shadow-x:-8px; }
 /* ---------- pricing ---------- */
 .pricing{
   position:relative; z-index:1;

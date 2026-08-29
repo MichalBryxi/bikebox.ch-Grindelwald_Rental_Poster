@@ -62,7 +62,7 @@ never stale relative to the source.
 ## Content (edit directly in `index.html`)
 
 - **Pricing** — two `<table>`s: the main Bike/E-Bike × Hardtail/Fully matrix,
-  and a second, separate table for Road/Gravel, Kids bikes, and Helmet
+  and a second, separate table for Road/Gravel, and Helmet
   rental. Plain rows — edit the numbers directly.
 - **Hours, address, phone, email** — in `<div class="footer">`.
 - **QR code target** — currently points to
