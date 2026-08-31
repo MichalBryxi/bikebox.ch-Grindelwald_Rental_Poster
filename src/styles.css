@@ -138,7 +138,8 @@ body{
   flex:1 0 auto;
   --headline-font-size: clamp(calc(var(--fmt-scale) * 32px), 13.5cqi, calc(var(--fmt-scale) * 90px));
   /* Half the headline's own rendered height (line-height .94 x font-size,
-     halved) — the amount the headline shifts up and the photo shifts down. */
+     halved). Shared primitive for per-format header tweaks — see the
+     per-format overrides section near the end of this file. */
   --headline-shift: calc(0.47 * var(--headline-font-size));
 }
 /* A real <img> instead of a CSS background: html-to-image's background-image
@@ -152,7 +153,6 @@ body{
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center calc(50% - var(--headline-shift));
 }
 .footer-brand{
   display:flex;
@@ -171,7 +171,6 @@ body{
   margin:calc(var(--fmt-scale) * 20px) 0 0;
   width:100%;
   font-size:var(--headline-font-size);
-  transform:translateY(calc(-1 * var(--headline-shift)));
 }
 .wordmark{
   position:absolute;
@@ -439,6 +438,32 @@ table.matrix td span{
 }
 .qr-card svg{width:100%;height:auto;display:block;}
 .qr-block .contact-line{margin:0;}
+
+/* ---------- per-format overrides ----------
+   Everything above this point is shared, format-agnostic layout. Deviations
+   that only make sense for one physical format (hero photo cropping, this
+   kind of hand-tuned composition detail) belong here instead, scoped by
+   [data-format] — set on <html> by applyFormat() in main.js, one value per
+   FORMATS key. Add a new block per format as needed rather than working
+   more conditionals into the shared rules above. */
+[data-format="a0"] .header{
+  /* A smaller header leaves more breathing room for the pricing section
+     below and tightens the whole composition. */
+  min-height:44cqi;
+}
+[data-format="a0"] .wordmark-wrap{
+  transform:translateY(calc(-1 * var(--headline-shift)));
+}
+[data-format="a0"] .hero-photo{
+  /* Crops in from the top (more foreground, fewer peaks) so the headline
+     — shifted up above — has terrain behind it instead of empty sky. */
+  object-position:center calc(50% - var(--headline-shift));
+}
+[data-format="dl"] .hero-photo{
+  /* The narrower frame crops in tight around the riders; nudge left so
+     they sit better within it. */
+  object-position:calc(50% + 6cqi) center;
+}
 
 @page{
   margin:0;

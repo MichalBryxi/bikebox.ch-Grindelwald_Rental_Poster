@@ -12,6 +12,7 @@ var root = document.documentElement;
 
 function applyFormat(key) {
   var size = FORMATS[key];
+  root.setAttribute('data-format', key);
   root.style.setProperty('--fmt-w', size[0]);
   root.style.setProperty('--fmt-h', size[1]);
   pageStyle.textContent = '@page{size:' + size[0] + 'mm ' + size[1] + 'mm;}';
