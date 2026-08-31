@@ -7,6 +7,12 @@
 <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+<fieldset class="format-bar">
+  <legend>Format</legend>
+  <label><input type="radio" name="format" value="a0" checked> A0 (84.1 &times; 118.9 cm)</label>
+  <label><input type="radio" name="format" value="dl"> Stand flyer (9.9 &times; 21 cm)</label>
+  <button type="button" id="export-png">Export as PNG&hellip;</button>
+</fieldset>
 <div class="sheet">
   <header class="header">
     <div>
@@ -118,5 +124,6 @@
     </div>
   </footer>
 </div>
+<script type="module" src="./main.js"></script>
 </body>
 </html>
