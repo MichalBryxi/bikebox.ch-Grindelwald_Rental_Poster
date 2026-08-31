@@ -160,23 +160,49 @@ body{
   display:block;
   filter:drop-shadow(0 calc(var(--fmt-scale) * 1px) calc(var(--fmt-scale) * 3px) rgba(0,0,0,.4));
 }
-.wordmark{
+.wordmark-wrap{
   position:relative;
   z-index:1;
   margin:calc(var(--fmt-scale) * 20px) 0 0;
+  width:100%;
+  font-size:clamp(calc(var(--fmt-scale) * 32px), 13.5cqi, calc(var(--fmt-scale) * 90px));
+  --stroke-w:.105em;
+}
+.wordmark{
+  position:absolute;
+  top:0;
+  left:0;
   width:100%;
   font-family:'TT Commons', sans-serif;
   font-weight:700;
   text-transform:uppercase;
   line-height:.94;
-  font-size:clamp(calc(var(--fmt-scale) * 32px), 13.5cqi, calc(var(--fmt-scale) * 90px));
-  -webkit-text-stroke:.085em var(--sticker-outline-2);
-  paint-order:stroke fill;
-  text-shadow:0.06em 0.08em 0 rgba(0,0,0,.3);
+  font-size:inherit;
   display:flex;
   justify-content:space-between;
 }
 .wordmark .sp{width:.28em;}
+/* The "sticker" outline+shadow effect is built from plain stacked, offset,
+   solid-color copies of the wordmark rather than text-shadow/-webkit-text-
+   stroke. Both of those text-painting properties render fine on screen but
+   come out wrong (dropped, or stuck at the pre-export width) once
+   html-to-image rasterizes this element through an SVG in "image mode" for
+   export — html-to-image's own DOM cloning is fine here, it's Chromium's
+   text-stroke/shadow painting that behaves differently in that mode. Plain
+   `color` + `transform:translate()` on duplicate layers isn't affected, and
+   painting order is just DOM order: shadow first, then the 8-direction
+   outline ring, then the real white text last (on top). The shadow's own
+   offset has to clear the outline ring's reach (--stroke-w) in both axes,
+   or the opaque outline paints over most of it and what's left reads as a
+   second, harder-edged shadow instead of one soft translucent one. */
+.wordmark-shadow{
+  color:rgba(0,0,0,.3);
+  transform:translate(0.17em, 0.21em);
+}
+.wordmark-outline{
+  color:var(--sticker-outline-2);
+  transform:translate(calc(var(--ox) * var(--stroke-w)), calc(var(--oy) * var(--stroke-w)));
+}
 .hero-bikes{
   position:absolute;
   left:50%;
