@@ -132,10 +132,22 @@ body{
   position:relative;
   z-index:1;
   min-height:54cqi;
-  background: url('./assets/images/hero-02.jpg') center / cover no-repeat;
+  overflow:hidden;
   color:var(--band-ink);
   padding:3cqi 7cqi 2.6cqi;
   flex:1 0 auto;
+}
+/* A real <img> instead of a CSS background: html-to-image's background-image
+   embedding is a fragile, silently-failing code path (fetches the resource
+   itself and can just drop it on error), whereas <img> capture is its
+   first-class, well-tested case. */
+.hero-photo{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 .footer-brand{
   display:flex;
