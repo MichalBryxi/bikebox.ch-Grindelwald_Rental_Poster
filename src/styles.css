@@ -1,11 +1,7 @@
-@font-face{font-family:'Oswald';font-style:normal;font-weight:500;font-display:swap;src:url('./assets/fonts/Oswald-500.woff2') format('woff2');}
-@font-face{font-family:'Oswald';font-style:normal;font-weight:700;font-display:swap;src:url('./assets/fonts/Oswald-700.woff2') format('woff2');}
-@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:400;font-display:swap;src:url('./assets/fonts/IBMPlexSans-400.woff2') format('woff2');}
-@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:500;font-display:swap;src:url('./assets/fonts/IBMPlexSans-500.woff2') format('woff2');}
-@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:600;font-display:swap;src:url('./assets/fonts/IBMPlexSans-600.woff2') format('woff2');}
-@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('./assets/fonts/IBMPlexMono-500.woff2') format('woff2');}
-@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('./assets/fonts/IBMPlexMono-600.woff2') format('woff2');}
-@font-face{font-family:'Baloo 2';font-style:normal;font-weight:700;font-display:swap;src:url('./assets/fonts/Baloo2-700.woff2') format('woff2');}
+@font-face{font-family:'TT Commons';font-style:normal;font-weight:400;font-display:swap;src:url('./assets/fonts/TTCommons-400.woff2') format('woff2');}
+@font-face{font-family:'TT Commons';font-style:normal;font-weight:500;font-display:swap;src:url('./assets/fonts/TTCommons-500.woff2') format('woff2');}
+@font-face{font-family:'TT Commons';font-style:normal;font-weight:600;font-display:swap;src:url('./assets/fonts/TTCommons-600.woff2') format('woff2');}
+@font-face{font-family:'TT Commons';font-style:normal;font-weight:700;font-display:swap;src:url('./assets/fonts/TTCommons-700.woff2') format('woff2');}
 
 :root{
   --paper:#F0F2EC;
@@ -57,7 +53,7 @@ body{
   align-items:flex-start;
   justify-content:center;
   padding:32px 16px 64px;
-  font-family:'IBM Plex Sans', system-ui, sans-serif;
+  font-family:'TT Commons', system-ui, sans-serif;
   color:var(--ink);
 }
 
@@ -101,7 +97,7 @@ body{
   z-index:1;
   margin:20px 0 0;
   width:100%;
-  font-family:'Oswald', sans-serif;
+  font-family:'TT Commons', sans-serif;
   font-weight:700;
   text-transform:uppercase;
   line-height:.94;
@@ -155,7 +151,7 @@ body{
 }
 .rowsub{
   display:block;
-  font-family:'IBM Plex Sans', sans-serif;
+  font-family:'TT Commons', sans-serif;
   font-weight:400;
   text-transform:none;
   letter-spacing:0;
@@ -169,7 +165,7 @@ body{
 }
 .emoji{font-size:1.15em; line-height:1; font-style:normal;}
 .fine{
-  font-family:'IBM Plex Mono', monospace;
+  font-family:'TT Commons', sans-serif;
   text-transform:none;
   font-weight:500;
   color:var(--muted);
@@ -188,7 +184,7 @@ body{
 .ico.susp path.fork{stroke:var(--trail); stroke-width:3.4;}
 .ico.susp circle.pivot{fill:var(--trail); r:2.2;}
 .section-title{
-  font-family:'Oswald', sans-serif;
+  font-family:'TT Commons', sans-serif;
   font-weight:600;
   text-transform:uppercase;
   letter-spacing:.04em;
@@ -197,7 +193,7 @@ body{
   color:var(--ink);
 }
 .section-note{
-  font-family:'IBM Plex Mono', monospace;
+  font-family:'TT Commons', sans-serif;
   font-size:clamp(8px, 1.7cqi, 12px);
   letter-spacing:.1em;
   text-transform:uppercase;
@@ -207,7 +203,7 @@ body{
 table.matrix{
   width:100%;
   border-collapse:collapse;
-  font-family:'IBM Plex Mono', monospace;
+  font-family:'TT Commons', sans-serif;
   font-variant-numeric:tabular-nums;
 }
 table.matrix.matrix-extra{margin-top:1.6cqi;}
@@ -220,21 +216,21 @@ table.matrix th, table.matrix td{
 table.matrix thead th{
   background:var(--band-bg);
   color:var(--band-ink);
-  font-weight:500;
+  font-weight:700;
   font-size:clamp(8.5px, 1.8cqi, 13px);
   letter-spacing:.1em;
   text-transform:uppercase;
 }
 table.matrix thead tr:first-child th{
-  font-family:'Oswald', sans-serif;
+  font-family:'TT Commons', sans-serif;
   font-size:clamp(10px, 2.3cqi, 15px);
   letter-spacing:.06em;
 }
 table.matrix tbody th{
   text-align:left;
   background:var(--paper-dim);
-  font-family:'Oswald', sans-serif;
-  font-weight:500;
+  font-family:'TT Commons', sans-serif;
+  font-weight:700;
   text-transform:uppercase;
   letter-spacing:.04em;
   font-size:clamp(10px, 2.4cqi, 15px);
@@ -256,7 +252,7 @@ table.matrix td span{
   flex-wrap:wrap;
   gap:0 2em;
   margin:1.2cqi 0 0;
-  font-family:'IBM Plex Mono', monospace;
+  font-family:'TT Commons', sans-serif;
   font-size:clamp(8px, 1.6cqi, 11px);
   color:var(--muted);
 }
@@ -318,7 +314,7 @@ table.matrix td span{
 }
 .contact-brand-logo .outline{fill:var(--band-ink);}
 .contact-brand-name{
-  font-family:'Baloo 2', sans-serif;
+  font-family:'TT Commons', sans-serif;
   font-weight:700;
   letter-spacing:.01em;
   font-size:clamp(11px, 3cqi, 18px);
@@ -335,7 +331,7 @@ table.matrix td span{
   display:grid;
   grid-template-columns:auto auto;
   gap:.15em 1.3em;
-  font-family:'IBM Plex Mono', monospace;
+  font-family:'TT Commons', sans-serif;
   font-size:clamp(8px, 1.6cqi, 11.5px);
 }
 .hours span:nth-child(odd){color:var(--band-ink); opacity:.6;}

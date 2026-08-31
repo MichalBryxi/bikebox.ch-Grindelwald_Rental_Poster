@@ -10,7 +10,7 @@ Local-only project. No Claude Artifact publishing.
 ```
 src/index.html          Source of truth (markup).
 src/styles.css          Source of truth (CSS).
-src/assets/fonts/*.woff2  8 font weights, self-hosted (see Fonts below).
+src/assets/fonts/*.woff2  4 font weights, self-hosted (see Fonts below).
 src/assets/images/*     Hand-sourced assets: hero photo, bike cutouts,
                         logo mark, QR code. Committed to git.
 vite.config.js          root: "src" — inlines every asset as base64 →
@@ -112,19 +112,24 @@ Self-hosted, no CDN calls (keeps the file fully offline-safe):
 
 | Font | Weight | Used for |
 |---|---|---|
-| Oswald | 500, 700 | Headline ("BIKE RENTAL"), section labels |
-| IBM Plex Sans | 400, 500, 600 | Body copy |
-| IBM Plex Mono | 500, 600 | Prices, table headers, footer data (tabular figures) |
-| Baloo 2 | 700 | The "bikebox" wordmark |
+| TT Commons | 400, 500, 600, 700 | Everywhere — headline, section labels, body copy, prices, table headers, footer data, the "bikebox" wordmark |
 
-**Baloo 2 was chosen by visual matching**, not from BikeBox's own CSS — their
-real logo (`src/assets/images/logo-bikebox-mark.svg` is only the hexagon icon;
-the full lowercase "bikebox" wordmark is a *rasterized* PNG baked into an SVG
-on their site, not real text) so there's no font name to read off it. I
-compared candidate rounded-geometric Google Fonts against their logo bitmap
-and Baloo 2 Bold was the closest match. If you get their actual brand font
-file at some point, swap it in — it'll look more correct than this
-approximation.
+**TT Commons is BikeBox's actual brand font** (confirmed against their real
+site usage), replacing an earlier approximation stack (Oswald + IBM Plex Sans
++ IBM Plex Mono + Baloo 2 for the wordmark — see git history if you need the
+old values). The `.ttf` source files live locally at
+`~/Downloads/ttCommons/TT-Commons_{weight}.ttf` (also installed system-wide
+under `~/Library/Fonts/`); only the four weights actually used on the poster
+(400/500/600/700) were converted to `.woff2` via `fontTools`
+(`pip install fonttools brotli`, then `TTFont(...); f.flavor='woff2';
+f.save(...)`) and committed under `src/assets/fonts/`. Not a real monospace:
+unlike the old IBM Plex Mono, TT Commons digits aren't tabular/fixed-width
+(checked via `hmtx` — advance widths range ~335–600 units across 0–9, and the
+font has no GSUB `tnum` feature either), but every place numbers appear in
+this layout (`table.matrix td`, `.fine`, `.hours`) is either individually
+centered per cell or short enough that this doesn't visibly matter — if a
+future layout stacks numbers in a way that needs true column alignment,
+that's the tradeoff to revisit.
 
 ## Asset sourcing
 
