@@ -347,7 +347,7 @@ table.matrix td span{
   gap:0 2em;
   margin:1.2cqi 0 0;
   font-family:'TT Commons', sans-serif;
-  font-size:clamp(calc(var(--fmt-scale) * 8px), 1.6cqi, calc(var(--fmt-scale) * 11px));
+  font-size:clamp(calc(var(--fmt-scale) * 10px), 2.1cqi, calc(var(--fmt-scale) * 14px));
   color:var(--muted);
 }
 .footnotes p{margin:0;}
