@@ -12,6 +12,10 @@ All notable changes to this project are documented here. Format follows
   download. Sizing throughout the layout is driven by `--fmt-w`/`--fmt-h`/
   `--fmt-scale` custom properties so type and spacing scale correctly for
   whichever format is selected.
+- A `[data-format]` attribute (set on `<html>` by `applyFormat()`) plus a
+  dedicated "per-format overrides" section in `styles.css` for styling that
+  should only apply to one physical format — hero-photo cropping today,
+  a clear place for future formats' own hand-tuned deviations.
 
 ### Changed
 
@@ -21,9 +25,11 @@ All notable changes to this project are documented here. Format follows
 - Footnote text below the pricing tables is larger and easier to read.
 - The "BIKE RENTAL" headline no longer has a black outline — plain white
   text with a drop shadow.
-- The headline sits closer to the mountain peaks in the header photo,
-  shifted up (and the photo's crop shifted down) by half the headline's
-  own height.
+- A0's headline sits closer to the mountain peaks: shifted up by half its
+  own height, with the header photo's crop tightened to match (more
+  foreground below, peaks near the top instead of floating in empty sky)
+  and the header itself a little shorter. DL's photo is nudged left so the
+  riders sit better within the narrower frame.
 
 ### Fixed
 
