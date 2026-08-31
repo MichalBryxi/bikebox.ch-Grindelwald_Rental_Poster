@@ -4,6 +4,11 @@
 @font-face{font-family:'TT Commons';font-style:normal;font-weight:700;font-display:swap;src:url('./assets/fonts/TTCommons-700.woff2') format('woff2');}
 
 :root{
+  /* No dark mode: this design is meant to render (and print/export)
+     identically regardless of the viewer's OS/browser preference. Forces
+     native form controls (the format-bar radios) to the light UA theme
+     too, since that's outside the reach of the custom properties below. */
+  color-scheme:light;
   --fmt-w:841;
   --fmt-h:1189;
   --fmt-scale:1;
@@ -20,31 +25,6 @@
   --band-ink:#F1F3ED;
   --sticker-outline:#FFFFFF;
   --sticker-outline-2:#14170F;
-}
-
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --paper:#181B15;
-    --paper-dim:#20241C;
-    --ink:#ECEEE4;
-    --signal:#F2C43F;
-    --signal-ink:#241A00;
-    --trail:#E07A4D;
-    --line:#34382C;
-    --muted:#9BA091;
-    --card:#20241C;
-  }
-}
-:root[data-theme="dark"]{
-  --paper:#181B15;
-  --paper-dim:#20241C;
-  --ink:#ECEEE4;
-  --signal:#F2C43F;
-  --signal-ink:#241A00;
-  --trail:#E07A4D;
-  --line:#34382C;
-  --muted:#9BA091;
-  --card:#20241C;
 }
 
 *{box-sizing:border-box;}
@@ -455,6 +435,10 @@ table.matrix td span{
   transform:translateY(calc(-1 * var(--headline-shift)));
 }
 [data-format="a0"] .hero-photo{
+  /* Oversized beyond the header's own box (clipped by its overflow:hidden)
+     so object-position has more image to reposition within — a bigger
+     effective zoom than a plain 100%-height cover-fit allows. */
+  height:150%;
   /* Crops in from the top (more foreground, fewer peaks) so the headline
      — shifted up above — has terrain behind it instead of empty sky. */
   object-position:center calc(50% - var(--headline-shift));
@@ -462,7 +446,7 @@ table.matrix td span{
 [data-format="dl"] .hero-photo{
   /* The narrower frame crops in tight around the riders; nudge left so
      they sit better within it. */
-  object-position:calc(50% + 6cqi) center;
+  object-position:calc(50% + -37cqi) center;
 }
 
 @page{

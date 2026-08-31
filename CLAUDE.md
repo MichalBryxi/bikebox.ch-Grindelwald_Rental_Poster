@@ -177,11 +177,11 @@ that's the tradeoff to revisit.
   icons riff on Swiss hiking-signpost pictograms) were an original design
   pass — see the CSS custom properties at the top of `styles.css`
   (`--paper`, `--ink`, `--signal`, `--trail`, `--band-bg`, `--band-ink`) for
-  the color system. `--band-bg`/`--band-ink` are **fixed** tones (not
-  light/dark-theme-adaptive) used specifically for the header photo band, the
-  table header rows, and the footer — those are meant to stay dark regardless
-  of the viewer's system theme, unlike the rest of the page which inverts
-  normally in dark mode.
+  the color system. There is deliberately no dark-mode variant — this is a
+  print/export design, and it renders (and prints/exports) with the same
+  light palette regardless of the viewer's OS/browser preference. `:root`
+  also sets `color-scheme:light` so native form controls (the format-bar
+  radios) don't pick up a dark UA theme either.
 - The page is sized with CSS container query units (`cqi`) throughout, scaled
   off the sheet's own width rather than the viewport, so it holds its
   proportions whether it's shown shrunk down in a browser window or printed
