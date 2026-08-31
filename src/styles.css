@@ -132,12 +132,10 @@ body{
   position:relative;
   z-index:1;
   min-height:54cqi;
-  --hero-pos: calc(50% - (120px * var(--fmt-scale))) calc(45% + (70px * var(--fmt-scale)));
-  --hero-size: 130%;
-  background: url('./assets/images/hero-02.jpg') var(--hero-pos) / var(--hero-size) no-repeat;
+  background: url('./assets/images/hero-02.jpg') center / cover no-repeat;
   color:var(--band-ink);
   padding:3cqi 7cqi 2.6cqi;
-  flex:0 0 auto;
+  flex:1 0 auto;
 }
 .footer-brand{
   display:flex;
@@ -344,7 +342,6 @@ table.matrix td span{
 /* ---------- footer ---------- */
 .footer{
   position:relative; z-index:1;
-  margin-top:auto;
   background:var(--band-bg);
   color:var(--band-ink);
   padding:2.6cqi 7cqi;
