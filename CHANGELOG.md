@@ -21,6 +21,9 @@ All notable changes to this project are documented here. Format follows
 - Footnote text below the pricing tables is larger and easier to read.
 - The "BIKE RENTAL" headline no longer has a black outline — plain white
   text with a drop shadow.
+- The headline sits closer to the mountain peaks in the header photo,
+  shifted up (and the photo's crop shifted down) by half the headline's
+  own height.
 
 ### Fixed
 
@@ -43,3 +46,7 @@ All notable changes to this project are documented here. Format follows
   clones verbatim — inside the SVG it renders into, `position:fixed` is
   relative to that SVG's own box, so the clone rendered itself off its own
   canvas. Replaced with an opaque overlay that covers the resize instead.
+- Type and spacing in the on-screen preview didn't scale together with the
+  sheet as it shrank to fit the window, so proportions only matched the
+  real output right at export/print time. A `ResizeObserver` now keeps
+  `--fmt-scale` synced to the sheet's actual rendered size at all times.
