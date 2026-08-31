@@ -19,6 +19,8 @@ All notable changes to this project are documented here. Format follows
   pricing table and the footer — the header photo now grows to absorb any
   left-over vertical space instead of it collapsing into one gap.
 - Footnote text below the pricing tables is larger and easier to read.
+- The "BIKE RENTAL" headline no longer has a black outline — plain white
+  text with a drop shadow.
 
 ### Fixed
 
@@ -32,10 +34,10 @@ All notable changes to this project are documented here. Format follows
     CSS class-driven one.
   - Header photo — replaced a CSS `background-image` (a fragile,
     silently-failing embed path in that library) with a plain `<img>`.
-  - "BIKE RENTAL" headline outline and drop shadow — replaced
-    `-webkit-text-stroke`/`text-shadow` (rendered correctly on screen, but
-    incorrectly once Chromium rasterizes the SVG in "image mode" for
-    export) with stacked, offset, solid-color duplicate layers.
+  - "BIKE RENTAL" headline drop shadow — replaced `text-shadow` (renders
+    correctly on screen, but gets dropped once Chromium rasterizes the SVG
+    in "image mode" for export) with a stacked, offset, solid-color
+    duplicate layer.
 - The export itself used to produce a blank image: the sheet was hidden
   during export via `position:fixed; left:-99999px`, which `html-to-image`
   clones verbatim — inside the SVG it renders into, `position:fixed` is
