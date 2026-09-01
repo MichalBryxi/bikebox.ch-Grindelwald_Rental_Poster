@@ -212,37 +212,12 @@ body{
   align-items:center;
   gap:.55em;
 }
-.group-col{
-  width:9cqi;
-  vertical-align:middle;
+.colhead{
+  display:inline-flex;
+  align-items:center;
+  gap:.5em;
+  justify-content:center;
 }
-table.matrix tbody th.group-col{
-  position:relative;
-  text-align:center;
-}
-/* Absolutely positioned (rather than sized in normal flow, as a plain
-   transform:rotate would be) so its own unrotated box — which is a full
-   line of text wide — never counts toward this column's min-content
-   width under table-layout:fixed. writing-mode:vertical-rl gave the same
-   narrow-column result on screen, but html-to-image renders it with a
-   noticeably smaller font on PNG export (same category of html-to-image
-   rasterization quirk as the text-shadow issue on the wordmark — see
-   .wordmark-shadow above); plain transform is the export-safe technique
-   already established in this file. */
-.grouplabel{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%) rotate(-90deg);
-  white-space:nowrap;
-  font-family:'TT Commons', sans-serif;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:.06em;
-  color:var(--ink);
-  font-size:clamp(calc(var(--fmt-scale) * 10px), 2.4cqi, calc(var(--fmt-scale) * 15px));
-}
-.grouplabel .emoji{font-size:1.5em;}
 .rowsub{
   display:block;
   white-space:normal;
