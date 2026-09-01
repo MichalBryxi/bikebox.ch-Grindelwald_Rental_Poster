@@ -250,10 +250,11 @@ table.matrix tbody th.group-col{
   font-weight:400;
   text-transform:none;
   letter-spacing:0;
-  font-size:.6em;
+  font-size:.68em;
   color:var(--muted);
   margin-top:.2em;
 }
+.susp-word{color:var(--trail);}
 .ico{
   flex:0 0 auto;
   color:currentColor;
@@ -349,7 +350,7 @@ table.matrix td span{
   gap:0 2em;
   margin:1.2cqi 0 0;
   font-family:'TT Commons', sans-serif;
-  font-size:clamp(calc(var(--fmt-scale) * 10px), 2.1cqi, calc(var(--fmt-scale) * 14px));
+  font-size:clamp(calc(var(--fmt-scale) * 11px), 2.3cqi, calc(var(--fmt-scale) * 15px));
   color:var(--muted);
 }
 .footnotes p{margin:0;}
@@ -417,7 +418,7 @@ table.matrix td span{
   margin:0;
 }
 .contact-line{
-  font-size:clamp(calc(var(--fmt-scale) * 10px), 2.3cqi, calc(var(--fmt-scale) * 14px));
+  font-size:clamp(calc(var(--fmt-scale) * 11px), 2.4cqi, calc(var(--fmt-scale) * 15px));
   line-height:1.45;
   margin:0 0 .15em;
 }
@@ -427,9 +428,9 @@ table.matrix td span{
   grid-template-columns:auto auto;
   gap:.15em 1.3em;
   font-family:'TT Commons', sans-serif;
-  font-size:clamp(calc(var(--fmt-scale) * 8px), 1.6cqi, calc(var(--fmt-scale) * 11.5px));
+  font-size:clamp(calc(var(--fmt-scale) * 9px), 1.8cqi, calc(var(--fmt-scale) * 13px));
 }
-.hours span:nth-child(odd){color:var(--band-ink); opacity:.6;}
+.hours span:nth-child(odd){color:var(--band-ink);}
 .hours span:nth-child(even){color:var(--band-ink);}
 .qr-block{
   display:flex;
@@ -474,6 +475,16 @@ table.matrix td span{
   /* The narrower frame crops in tight around the riders; nudge left so
      they sit better within it. */
   object-position:calc(50% + -37cqi) center;
+}
+/* At true DL physical size the smallest print (proportioned the same as
+   on A0, just at ~1/8th the absolute size) gets hard to read — bumping
+   only the weight, not the size, keeps the layout untouched while adding
+   the contrast small text needs at that scale. */
+[data-format="dl"] .rowsub,
+[data-format="dl"] .footnotes,
+[data-format="dl"] .hours,
+[data-format="dl"] .contact-line{
+  font-weight:700;
 }
 
 @page{
