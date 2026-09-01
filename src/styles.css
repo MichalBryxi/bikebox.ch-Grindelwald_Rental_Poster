@@ -207,19 +207,38 @@ body{
   position:relative; z-index:1;
   padding:2.6cqi 7cqi 2cqi;
 }
-.colhead{
-  display:inline-flex;
-  align-items:center;
-  gap:.5em;
-  justify-content:center;
-}
 .rowhead{
   display:flex;
   align-items:center;
   gap:.55em;
 }
+.group-col{
+  width:9cqi;
+  vertical-align:middle;
+}
+table.matrix tbody th.group-col{
+  text-align:center;
+}
+table.matrix.matrix-extra th.group-col{
+  border:none;
+  background:none;
+}
+.grouplabel{
+  writing-mode:vertical-rl;
+  text-orientation:sideways;
+  transform:rotate(180deg);
+  white-space:nowrap;
+  font-family:'TT Commons', sans-serif;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink);
+  font-size:clamp(calc(var(--fmt-scale) * 8px), 1.7cqi, calc(var(--fmt-scale) * 11px));
+}
+.grouplabel .emoji{font-size:1.5em;}
 .rowsub{
   display:block;
+  white-space:normal;
   font-family:'TT Commons', sans-serif;
   font-weight:400;
   text-transform:none;
@@ -271,11 +290,12 @@ body{
 }
 table.matrix{
   width:100%;
+  table-layout:fixed;
   border-collapse:collapse;
   font-family:'TT Commons', sans-serif;
   font-variant-numeric:tabular-nums;
 }
-table.matrix.matrix-extra{margin-top:1.6cqi;}
+table.matrix + table.matrix{margin-top:1.6cqi;}
 table.matrix th, table.matrix td{
   border:calc(var(--fmt-scale) * 1px) solid var(--line);
   padding:.85cqi 1.6cqi;
