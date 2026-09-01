@@ -219,10 +219,6 @@ body{
 table.matrix tbody th.group-col{
   text-align:center;
 }
-table.matrix.matrix-extra th.group-col{
-  border:none;
-  background:none;
-}
 .grouplabel{
   writing-mode:vertical-rl;
   text-orientation:sideways;
@@ -233,7 +229,7 @@ table.matrix.matrix-extra th.group-col{
   text-transform:uppercase;
   letter-spacing:.06em;
   color:var(--ink);
-  font-size:clamp(calc(var(--fmt-scale) * 8px), 1.7cqi, calc(var(--fmt-scale) * 11px));
+  font-size:clamp(calc(var(--fmt-scale) * 10px), 2.4cqi, calc(var(--fmt-scale) * 15px));
 }
 .grouplabel .emoji{font-size:1.5em;}
 .rowsub{
