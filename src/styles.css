@@ -234,6 +234,9 @@ table.matrix tbody th.group-col{
   top:50%;
   left:50%;
   transform:translate(-50%, -50%) rotate(-90deg);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
   white-space:nowrap;
   font-family:'TT Commons', sans-serif;
   font-weight:700;
@@ -242,7 +245,13 @@ table.matrix tbody th.group-col{
   color:var(--ink);
   font-size:clamp(calc(var(--fmt-scale) * 10px), 2.4cqi, calc(var(--fmt-scale) * 15px));
 }
-.grouplabel .emoji{font-size:1.5em;}
+.grouplabel-top{
+  font-size:.6em;
+  font-weight:600;
+  letter-spacing:.12em;
+  color:var(--muted);
+  margin-bottom:.15em;
+}
 .rowsub{
   display:block;
   white-space:normal;
@@ -308,6 +317,15 @@ table.matrix th, table.matrix td{
   border:calc(var(--fmt-scale) * 1px) solid var(--line);
   padding:.85cqi 1.6cqi;
   text-align:center;
+}
+/* The "Half day*"/"Full day**" headers and the price cells read as
+   optically high within their row (font metrics, not a real centering
+   bug) — nudge them down a touch while keeping total vertical padding
+   the same, so row height is unaffected. */
+table.matrix thead th,
+table.matrix td{
+  padding-top:1.15cqi;
+  padding-bottom:.55cqi;
 }
 .col1{width:24cqi;}
 table.matrix thead th{
@@ -446,6 +464,15 @@ table.matrix td span{
 }
 .qr-card svg{width:100%;height:auto;display:block;}
 .qr-block .contact-line{margin:0;}
+.qr-cta{
+  margin:0 0 .3em;
+  font-family:'TT Commons', sans-serif;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-size:clamp(calc(var(--fmt-scale) * 10px), 2.2cqi, calc(var(--fmt-scale) * 14px));
+  color:var(--signal);
+}
 
 /* ---------- per-format overrides ----------
    Everything above this point is shared, format-agnostic layout. Deviations
