@@ -71,7 +71,8 @@ body{
 .format-bar input[type="radio"]{
   accent-color:var(--signal);
 }
-.format-bar #export-png{
+.format-bar #export-png,
+.format-bar #export-pdf{
   padding:.5em 1em;
   border:1px solid var(--ink);
   border-radius:6px;
@@ -81,12 +82,16 @@ body{
   font-size:1em;
   font-weight:500;
   cursor:pointer;
+}
+.format-bar #export-png{
   margin-left:auto;
 }
-.format-bar #export-png:hover{
+.format-bar #export-png:hover,
+.format-bar #export-pdf:hover{
   opacity:.85;
 }
-.format-bar #export-png:disabled{
+.format-bar #export-png:disabled,
+.format-bar #export-pdf:disabled{
   opacity:.5;
   cursor:default;
 }
