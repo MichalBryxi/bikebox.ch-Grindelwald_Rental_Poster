@@ -97,6 +97,11 @@ async function withSheetSized(sheetSizeMm, scaleRefWidthMm, fn) {
   }
 }
 
+// e.g. size [594, 841] + 'pdf' -> 'BikeBox_Grindelwald_Rental_594x841.pdf'
+function exportFilename(size, ext) {
+  return 'BikeBox_Grindelwald_Rental_' + size[0] + 'x' + size[1] + '.' + ext;
+}
+
 async function exportPng() {
   var button = document.getElementById('export-png');
   var key = document.querySelector('input[name="format"]:checked').value;
@@ -114,7 +119,7 @@ async function exportPng() {
       });
       var a = document.createElement('a');
       a.href = dataUrl;
-      a.download = 'bikebox-flyer-' + key + '.png';
+      a.download = exportFilename(size, 'png');
       a.click();
     });
   } finally {
@@ -188,7 +193,7 @@ async function exportPdf() {
       });
       pdf.addImage(dataUrl, 'PNG', MARK_LEN_MM, MARK_LEN_MM, bleedW, bleedH);
       drawCropMarks(pdf, pageW, pageH, BLEED_MM + MARK_LEN_MM, MARK_LEN_MM);
-      pdf.save('bikebox-flyer-' + key + '-bleed.pdf');
+      pdf.save(exportFilename(size, 'pdf'));
     });
   } finally {
     button.disabled = false;
