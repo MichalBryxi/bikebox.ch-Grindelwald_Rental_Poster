@@ -486,15 +486,21 @@ table.matrix td span{
    [data-format] — set on <html> by applyFormat() in main.js, one value per
    FORMATS key. Add a new block per format as needed rather than working
    more conditionals into the shared rules above. */
-[data-format="a0"] .header{
+/* "big" (70×100cm) shares A1's ~0.71 aspect ratio (0.70 vs 0.7063 —
+   indistinguishable in practice), so it reuses A1's hand-tuned composition
+   rather than getting its own near-duplicate block. */
+[data-format="a1"] .header,
+[data-format="big"] .header{
   /* A smaller header leaves more breathing room for the pricing section
      below and tightens the whole composition. */
   min-height:44cqi;
 }
-[data-format="a0"] .wordmark-wrap{
+[data-format="a1"] .wordmark-wrap,
+[data-format="big"] .wordmark-wrap{
   transform:translateY(calc(-1 * var(--headline-shift)));
 }
-[data-format="a0"] .hero-photo{
+[data-format="a1"] .hero-photo,
+[data-format="big"] .hero-photo{
   /* Oversized beyond the header's own box (clipped by its overflow:hidden)
      so object-position has more image to reposition within — a bigger
      effective zoom than a plain 100%-height cover-fit allows. */
@@ -509,7 +515,7 @@ table.matrix td span{
   object-position:calc(50% + -37cqi) center;
 }
 /* At true DL physical size the smallest print (proportioned the same as
-   on A0, just at ~1/8th the absolute size) gets hard to read — bumping
+   on A1, just at ~1/6th the absolute size) gets hard to read — bumping
    only the weight, not the size, keeps the layout untouched while adding
    the contrast small text needs at that scale. */
 [data-format="dl"] .rowsub,
