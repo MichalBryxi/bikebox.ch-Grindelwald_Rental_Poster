@@ -540,8 +540,9 @@ table.matrix td span{
     display:none;
   }
   .sheet{
-    width:calc((var(--fmt-w) - 20) * 1mm);
-    height:calc((var(--fmt-h) - 20) * 1mm);
+    /* Fills the physical page edge-to-edge — no inner white margin. */
+    width:calc(var(--fmt-w) * 1mm);
+    height:calc(var(--fmt-h) * 1mm);
     aspect-ratio:auto;
     box-shadow:none; margin:0;
     break-inside:avoid;

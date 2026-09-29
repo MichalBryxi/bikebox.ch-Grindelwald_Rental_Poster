@@ -2,7 +2,6 @@ import { toPng } from 'html-to-image';
 import { jsPDF } from 'jspdf';
 
 var FORMATS = { a0: [841, 1189], dl: [99, 210] };
-var PRINT_GUTTER_MM = 20; // matches the @media print .sheet width/height reduction in styles.css
 var BLEED_MM = 3; // print-ready PDF: 3mm bleed added beyond the trim size on every side
 var MARK_LEN_MM = 5; // crop-mark stroke length, drawn in an extra margin beyond the bleed box
 var PNG_DPI = 150;
@@ -58,14 +57,18 @@ document.getElementById('export-pdf').addEventListener('click', function () {
   exportPdf();
 });
 
-// Lays the sheet out at true physical size (same formula @media print uses)
-// for the duration of `fn`, then restores it. html-to-image clones computed
-// styles verbatim, so moving the sheet off-screen via position:fixed
-// wouldn't work here — inside the SVG foreignObject it renders into,
-// "fixed" is relative to that foreignObject's own box, so the clone would
-// render itself off its own canvas and capture as blank. An opaque overlay
-// covers the resize instead, and the sheet stays in normal flow.
-async function withSheetAtPrintSize(size, fn) {
+// Lays the sheet out at a given physical size (same technique @media print
+// uses) for the duration of `fn`, then restores it. html-to-image clones
+// computed styles verbatim, so moving the sheet off-screen via
+// position:fixed wouldn't work here — inside the SVG foreignObject it
+// renders into, "fixed" is relative to that foreignObject's own box, so
+// the clone would render itself off its own canvas and capture as blank.
+// An opaque overlay covers the resize instead, and the sheet stays in
+// normal flow. `scaleRefWidthMm` drives --fmt-scale (the baseline for
+// fixed-px clamp minimums) independently of the sheet's own mm size, so a
+// bleed-enlarged sheet (see exportPdf) doesn't itself skew that scale —
+// it should always track the nominal format width.
+async function withSheetSized(sheetSizeMm, scaleRefWidthMm, fn) {
   var prev = {
     width: sheet.style.width,
     height: sheet.style.height,
@@ -79,9 +82,9 @@ async function withSheetAtPrintSize(size, fn) {
   // Set --fmt-scale directly rather than waiting on the ResizeObserver
   // above (which only fires on the next frame), so the capture below is
   // correct immediately.
-  root.style.setProperty('--fmt-scale', String(size[0] / 210));
-  sheet.style.width = (size[0] - PRINT_GUTTER_MM) + 'mm';
-  sheet.style.height = (size[1] - PRINT_GUTTER_MM) + 'mm';
+  root.style.setProperty('--fmt-scale', String(scaleRefWidthMm / 210));
+  sheet.style.width = sheetSizeMm[0] + 'mm';
+  sheet.style.height = sheetSizeMm[1] + 'mm';
   sheet.style.aspectRatio = 'auto';
 
   try {
@@ -103,7 +106,8 @@ async function exportPng() {
   button.textContent = 'Exporting…';
 
   try {
-    await withSheetAtPrintSize(size, async function () {
+    // Exact trim size, filling the image edge-to-edge — no inner padding.
+    await withSheetSized(size, size[0], async function () {
       var dataUrl = await toPng(sheet, {
         pixelRatio: PNG_DPI / 96,
         backgroundColor: '#ffffff',
@@ -155,26 +159,26 @@ async function exportPdf() {
   button.textContent = 'Exporting…';
 
   try {
-    await withSheetAtPrintSize(size, async function () {
+    // Render the sheet itself at trim + 2×BLEED_MM, so the design's own
+    // artwork (hero photo, solid backgrounds) fills all the way to the
+    // bleed edge instead of leaving blank padding there — that's what
+    // makes it real bleed rather than an oversized white border.
+    var bleedW = size[0] + BLEED_MM * 2;
+    var bleedH = size[1] + BLEED_MM * 2;
+
+    await withSheetSized([bleedW, bleedH], size[0], async function () {
       var dataUrl = await toPng(sheet, {
         pixelRatio: PNG_DPI / 96,
         backgroundColor: '#ffffff',
       });
 
-      // The trim size is `size`; the sheet itself already sits inset by
-      // PRINT_GUTTER_MM (a deliberate design margin, not bleed — see
-      // styles.css). The PDF page is trim size + 2×(BLEED_MM + MARK_LEN_MM):
-      // BLEED_MM of actual bleed, plus MARK_LEN_MM more of blank margin to
-      // draw crop marks in. It's filled white (jsPDF's default page
-      // background, matching the body background outside the sheet in
-      // print) and the sheet re-centered within it — so trimming exactly
-      // at the crop marks lands back on the intended trim size with the
-      // original design untouched.
-      var outset = BLEED_MM + MARK_LEN_MM;
-      var sheetW = size[0] - PRINT_GUTTER_MM;
-      var sheetH = size[1] - PRINT_GUTTER_MM;
-      var pageW = size[0] + outset * 2;
-      var pageH = size[1] + outset * 2;
+      // The PDF page adds MARK_LEN_MM more of blank margin around the
+      // bleed box, purely to give the crop marks room to be drawn outside
+      // the artwork — trimming at those marks lands exactly on the
+      // intended trim size, with BLEED_MM of real artwork having covered
+      // the cut.
+      var pageW = bleedW + MARK_LEN_MM * 2;
+      var pageH = bleedH + MARK_LEN_MM * 2;
 
       var pdf = new jsPDF({
         unit: 'mm',
@@ -182,8 +186,8 @@ async function exportPdf() {
         orientation: pageW <= pageH ? 'p' : 'l',
         compress: true,
       });
-      pdf.addImage(dataUrl, 'PNG', (pageW - sheetW) / 2, (pageH - sheetH) / 2, sheetW, sheetH);
-      drawCropMarks(pdf, pageW, pageH, outset, MARK_LEN_MM);
+      pdf.addImage(dataUrl, 'PNG', MARK_LEN_MM, MARK_LEN_MM, bleedW, bleedH);
+      drawCropMarks(pdf, pageW, pageH, BLEED_MM + MARK_LEN_MM, MARK_LEN_MM);
       pdf.save('bikebox-flyer-' + key + '-bleed.pdf');
     });
   } finally {
