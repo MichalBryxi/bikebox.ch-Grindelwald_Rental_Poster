@@ -28,6 +28,8 @@ All notable changes to this project are documented here. Format follows
 - The footer QR column now stretches to the height of the address column
   and spreads its items over it; the QR code fills the space left over
   (never smaller than 18mm printed). Same layout for every format.
+- The footer address column is split into three groups (logo, address,
+  opening hours) spread over the footer height, matching the QR column.
 
 ### Fixed
 

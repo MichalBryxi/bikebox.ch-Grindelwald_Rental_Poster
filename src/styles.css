@@ -426,6 +426,15 @@ table.matrix td span{
   border-right:calc(var(--fmt-scale) * 1px) solid rgba(241,243,237,.22);
   align-self:stretch;
 }
+/* Three groups - logo, address, opening hours - spread over the footer
+   height, matching the QR column next to it. Their own margins stay as the
+   minimum gaps when there's no spare room. */
+.footer-contact{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.footer-contact > *{flex:0 0 auto;}
 .contact-brand{
   display:flex;
   align-items:center;
