@@ -25,7 +25,11 @@ All notable changes to this project are documented here. Format follows
 - The "Half day" column is now labelled "4 hours", and its footnote is gone;
   the full-day footnote moved up to a single asterisk.
 - The bike-name column is a little wider so "Fully Premium" fits.
-- Prices in the table are a little bigger.
+- Prices in the table are a little bigger, and the same share of the sheet
+  width on every format.
+- On the Stand flyer the bike names, group labels (E-Bike / Bike) and the
+  lines under the names are bigger, with a wider name column; the header
+  photo is shorter to make room and its scene sits lower in the frame.
 - The footer QR column now stretches to the height of the address column
   and spreads its items over it; the QR code fills the space left over
   (never smaller than 18mm printed). Same layout for every format.

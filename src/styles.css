@@ -362,8 +362,10 @@ table.matrix tbody th{
   font-size:clamp(calc(var(--fmt-scale) * 10px), 2.4cqi, calc(var(--fmt-scale) * 15px));
   white-space:nowrap;
 }
+/* Plain cqi (no clamp) so the prices are the same share of the sheet width
+   on every format. */
 table.matrix td{
-  font-size:clamp(calc(var(--fmt-scale) * 15px), 4.0cqi, calc(var(--fmt-scale) * 26px));
+  font-size:4cqi;
   font-weight:600;
   color:var(--ink);
 }
@@ -543,7 +545,17 @@ table.matrix td span{
      it inside the frame - a fixed length overshot the photo's right edge and
      left an empty strip down the side of the header. */
   object-position:100% center;
+  /* Taller than the header (clipped below the table edge) so the scene
+     sits lower in the frame, like on A1. */
+  height:125%;
 }
+/* The narrow sheet caps the bike names, group labels and sub-lines at a
+   size that's hard to read on the stand flyer. Bigger here, with a wider
+   name column to fit them; the header photo shrinks to make room. */
+[data-format="dl"] .col1{width:41cqi;}
+[data-format="dl"] table.matrix tbody th{font-size:3.1cqi;}
+[data-format="dl"] .grouplabel{font-size:3.4cqi;}
+[data-format="dl"] .rowsub{font-size:.8em;}
 /* At true DL physical size the smallest print (proportioned the same as
    on A1, just at ~1/6th the absolute size) gets hard to read — bumping
    only the weight, not the size, keeps the layout untouched while adding
