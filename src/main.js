@@ -1,7 +1,7 @@
 import { toPng } from 'html-to-image';
 import { jsPDF } from 'jspdf';
 
-var FORMATS = { a1: [594, 841], dl: [99, 210], big: [700, 1000] };
+var FORMATS = { a1: [594, 841], dl: [105, 210], big: [700, 1000] };
 var BLEED_MM = 3; // print-ready PDF: 3mm bleed added beyond the trim size on every side
 var MARK_LEN_MM = 5; // crop-mark stroke length, drawn in an extra margin beyond the bleed box
 var PNG_DPI = 150;

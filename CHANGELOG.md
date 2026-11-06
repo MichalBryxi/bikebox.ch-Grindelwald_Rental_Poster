@@ -13,6 +13,7 @@ All notable changes to this project are documented here. Format follows
 
 ### Changed
 
+- The Stand flyer is 10.5 × 21 cm (was 9.9 × 21 cm).
 - Bike rows are ordered from most to least suspension: Fully Premium, Fully,
   Hardtail for e-bikes; Fully, Hardtail for regular bikes.
 - "Road / Gravel" is now just "Gravel" - road bikes are no longer rented.
