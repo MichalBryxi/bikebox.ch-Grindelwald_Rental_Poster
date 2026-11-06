@@ -293,6 +293,12 @@ table.matrix tbody th.group-col{
 .ico.susp path.shock{stroke:var(--trail); stroke-width:4.2;}
 .ico.susp path.fork{stroke:var(--trail); stroke-width:3.4;}
 .ico.susp circle.pivot{fill:var(--trail); r:2.2;}
+.ico.susp path.plain{stroke:currentColor;}
+.ico.susp circle.plain{fill:currentColor;}
+.ico.susp .glow path, .ico.susp .glow circle, .ico.susp .glow polygon{fill:none; stroke:var(--signal); stroke-width:8; opacity:.75;}
+.ico.susp.premium{overflow:visible;}
+.ico.susp.premium path.shock{stroke-width:2.8;}
+.ico.susp polygon.premium-star{fill:none; stroke:currentColor; stroke-width:2.2; stroke-linejoin:round;}
 .section-title{
   font-family:'TT Commons', sans-serif;
   font-weight:600;
@@ -332,7 +338,7 @@ table.matrix td{
   padding-top:1.15cqi;
   padding-bottom:.55cqi;
 }
-.col1{width:24cqi;}
+.col1{width:26cqi;}
 table.matrix thead th{
   background:var(--band-bg);
   color:var(--band-ink);
@@ -398,7 +404,7 @@ table.matrix td span{
   position:relative;
 }
 .footnote-list li::before{
-  content:"\2013";
+  content:"\2022";
   position:absolute;
   left:0;
 }
@@ -510,9 +516,11 @@ table.matrix td span{
   object-position:center calc(50% - var(--headline-shift));
 }
 [data-format="dl"] .hero-photo{
-  /* The narrower frame crops in tight around the riders; nudge left so
-     they sit better within it. */
-  object-position:calc(50% + -37cqi) center;
+  /* The narrower frame crops in tight around the riders; shift the photo
+     as far left as it goes so they sit better within it. A percentage keeps
+     it inside the frame - a fixed length overshot the photo's right edge and
+     left an empty strip down the side of the header. */
+  object-position:100% center;
 }
 /* At true DL physical size the smallest print (proportioned the same as
    on A1, just at ~1/6th the absolute size) gets hard to read — bumping

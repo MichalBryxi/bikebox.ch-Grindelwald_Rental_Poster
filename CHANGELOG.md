@@ -3,6 +3,33 @@
 All notable changes to this project are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+### Added
+
+- "Fully Premium" e-bike row (90.- / 125.-) at the top of the E-Bike group.
+  Its bike icon is slightly longer with a slacker fork and a horizontal shock
+  inside the frame and a star, all drawn as grey lines with a gold glow.
+
+### Changed
+
+- Bike rows are ordered from most to least suspension: Fully Premium, Fully,
+  Hardtail for e-bikes; Fully, Hardtail for regular bikes.
+- "Road / Gravel" is now just "Gravel" - road bikes are no longer rented.
+- The Gravel and Helmet rows use line-drawn pictograms (a drop-bar gravel bike
+  and a side-view helmet with vent slots and a Y strap) instead of emoji,
+  matching the other bike icons. They have no red accent, since red marks
+  suspension on the MTB icons.
+- The notes under the table use bullets instead of dashes, and no em-dashes.
+- The "Half day" column is now labelled "4 hours", and its footnote is gone;
+  the full-day footnote moved up to a single asterisk.
+- The bike-name column is a little wider so "Fully Premium" fits.
+
+### Fixed
+
+- The Stand flyer header photo now reaches the right edge instead of leaving
+  an empty strip down that side.
+
 ## [v0.1.0]
 
 ### Added

@@ -82,8 +82,8 @@ save to `src/index.html`, `src/styles.css`, or any file under
 
 ## Content (edit directly in `index.html`)
 
-- **Pricing** — two `<table>`s: the main Bike/E-Bike × Hardtail/Fully matrix,
-  and a second, separate table for Road/Gravel, and Helmet
+- **Pricing** — three `<table>`s: E-Bike (Fully Premium / Fully / Hardtail),
+  Bike (Fully / Hardtail), and a separate table for Gravel and Helmet
   rental. Plain rows — edit the numbers directly.
 - **Hours, address, phone, email** — in `<div class="footer">`.
 - **QR code target** — currently points to
