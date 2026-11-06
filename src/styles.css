@@ -335,8 +335,8 @@ table.matrix th, table.matrix td{
    the same, so row height is unaffected. */
 table.matrix thead th,
 table.matrix td{
-  padding-top:1.15cqi;
-  padding-bottom:.55cqi;
+  padding-top:1.0cqi;
+  padding-bottom:.45cqi;
 }
 .col1{width:26cqi;}
 table.matrix thead th{
@@ -363,7 +363,7 @@ table.matrix tbody th{
   white-space:nowrap;
 }
 table.matrix td{
-  font-size:clamp(calc(var(--fmt-scale) * 13px), 3.6cqi, calc(var(--fmt-scale) * 22px));
+  font-size:clamp(calc(var(--fmt-scale) * 15px), 4.0cqi, calc(var(--fmt-scale) * 26px));
   font-weight:600;
   color:var(--ink);
 }
@@ -461,19 +461,32 @@ table.matrix td span{
 }
 .hours span:nth-child(odd){color:var(--band-ink);}
 .hours span:nth-child(even){color:var(--band-ink);}
+/* Stretches to the height of the address/hours column and spreads its
+   items over it, so that column - not the QR - sets the footer height. */
 .qr-block{
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:.6em;
+  justify-content:space-between;
+  align-self:stretch;
+  gap:.3em;
 }
+/* The QR fills whatever height is left in its column once the text lines
+   are placed. contain:size stops it pushing the footer taller; the square
+   aspect-ratio derives its width from that height. */
 .qr-card{
   background:#fff;
   padding:.7cqi;
-  width:clamp(calc(var(--fmt-scale) * 62px), 15.5cqi, calc(var(--fmt-scale) * 106px));
+  flex:1 1 0;
+  /* Never smaller than 18mm on the printed sheet, so it still scans:
+     the sheet is --fmt-w mm wide = 100cqi. */
+  min-height:calc(1800cqi / var(--fmt-w));
+  aspect-ratio:1;
+  contain:size;
+  box-sizing:border-box;
   line-height:0;
 }
-.qr-card svg{width:100%;height:auto;display:block;}
+.qr-card img{width:100%;height:100%;display:block;}
 .qr-block .contact-line{margin:0;}
 .qr-cta{
   margin:0 0 .3em;
