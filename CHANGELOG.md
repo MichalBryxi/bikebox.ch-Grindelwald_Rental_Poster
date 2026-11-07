@@ -16,10 +16,11 @@ All notable changes to this project are documented here. Format follows
 - The headline reads "E-BIKE RENTAL" instead of "BIKE RENTAL".
 - The small group label above "E-Bike" / "Bike" reads "Mountain" instead of
   "MTB".
-- E-bike icons have a thicker down tube along its full length where the
+- E-bike icons have a thicker middle section of the down tube where the
   battery sits, so they look different from the regular bikes.
-- Suspension forks and shocks in the bike icons are drawn at the same line
-  thickness as the frame; only the red colour marks them.
+- Suspension forks and rear shocks in the bike icons are a touch thicker
+  than the frame (and the rigid gravel fork), and the pivot dot at the rear
+  shock is gone.
 - The Stand flyer is 10.5 × 21 cm (was 9.9 × 21 cm).
 - Bike rows are ordered from most to least suspension: Fully Premium, Fully,
   Hardtail for e-bikes; Fully, Hardtail for regular bikes.
