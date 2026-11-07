@@ -290,14 +290,15 @@ table.matrix tbody th.group-col{
 .ico.susp circle:not(.pivot){fill:none; stroke:currentColor; stroke-width:2.6;}
 .ico.susp path{fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;}
 .ico.susp path.rear{stroke:currentColor;}
-.ico.susp path.shock{stroke:var(--trail); stroke-width:4.2;}
-.ico.susp path.fork{stroke:var(--trail); stroke-width:3.4;}
+.ico.susp path.shock{stroke:var(--trail);}
+.ico.susp path.fork{stroke:var(--trail);}
 .ico.susp circle.pivot{fill:var(--trail); r:2.2;}
+/* E-bikes: the battery makes the middle of the down tube visibly thicker. */
+.ico.susp path.battery{stroke-width:4.6;}
 .ico.susp path.plain{stroke:currentColor;}
 .ico.susp circle.plain{fill:currentColor;}
 .ico.susp .glow path, .ico.susp .glow circle, .ico.susp .glow polygon{fill:none; stroke:var(--signal); stroke-width:8; opacity:.75;}
 .ico.susp.premium{overflow:visible;}
-.ico.susp.premium path.shock{stroke-width:2.8;}
 .ico.susp polygon.premium-star{fill:none; stroke:currentColor; stroke-width:2.2; stroke-linejoin:round;}
 .section-title{
   font-family:'TT Commons', sans-serif;
