@@ -18,6 +18,8 @@ All notable changes to this project are documented here. Format follows
   "MTB".
 - E-bike icons have a thicker middle section of the down tube where the
   battery sits, so they look different from the regular bikes.
+- E-bike icons (Fully, Hardtail) carry a small lightning bolt with a gold
+  glow, in the corner where Fully Premium has its star.
 - Suspension forks and rear shocks in the bike icons are a touch thicker
   than the frame (and the rigid gravel fork), and the pivot dot at the rear
   shock is gone.
